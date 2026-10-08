@@ -1,0 +1,39 @@
+{
+  "name": "lava-jato-windows",
+  "productName": "Lava-Jato",
+  "version": "1.0.0",
+  "description": "Sistema Lava-Jato: pátio, faturamento, vistoria e financeiro",
+  "author": "Lava-Jato",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "44.4.5",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "app.lavajato.sistema",
+    "productName": "Lava-Jato",
+    "copyright": "Lava-Jato",
+    "files": ["main.js", "preload.js", "offline.html", "build/icon.png"],
+    "directories": { "output": "dist", "buildResources": "build" },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.png",
+      "artifactName": "Lava-Jato-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Lava-Jato",
+      "language": "1046",
+      "installerLanguages": ["pt_BR"]
+    }
+  }
+}
